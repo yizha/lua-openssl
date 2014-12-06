@@ -125,12 +125,12 @@
 	<td class="summary">get count in x509_name.</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#x509_name:get_text">x509_name:get_text (identid)</a></td>
+	<td class="name" nowrap><a href="#x509_name:get_text">x509_name:get_text (identid[, lastpos=-1])</a></td>
 	<td class="summary">get text by given asn1_object or nid</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#x509_name:get_index">x509_name:get_index ()</a></td>
-	<td class="summary">get index by give asn1_object or nid</td>
+	<td class="name" nowrap><a href="#x509_name:get_entry">x509_name:get_entry (index[, utf8=true])</a></td>
+	<td class="summary">get x509 name entry by index</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#x509_name:add_entry">x509_name:add_entry (identid, data[, utf8])</a></td>
@@ -430,7 +430,7 @@
 </dd>
     <dt>
     <a name = "x509_name:get_text"></a>
-    <strong>x509_name:get_text (identid)</strong>
+    <strong>x509_name:get_text (identid[, lastpos=-1])</strong>
     </dt>
     <dd>
     get text by given asn1_object or nid
@@ -442,15 +442,25 @@
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
          for asn1_object
         </li>
+        <li><span class="parameter">lastpos</span>
+            <span class="types"><span class="type">number</span></span>
+         retrieve the next index after lastpos
+         (<em>default</em> -1)
+        </li>
     </ul>
 
     <h3>Returns:</h3>
     <ol>
-
+        <li>
            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
+</li>
+        <li>
+           <span class="types"><span class="type">lastpos</span></span>
 
+
+</li>
     </ol>
 
 
@@ -458,19 +468,33 @@
 
 </dd>
     <dt>
-    <a name = "x509_name:get_index"></a>
-    <strong>x509_name:get_index ()</strong>
+    <a name = "x509_name:get_entry"></a>
+    <strong>x509_name:get_entry (index[, utf8=true])</strong>
     </dt>
     <dd>
-    get index by give asn1_object or nid
+    get x509 name entry by index
 
 
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">index</span>
+            <span class="types"><span class="type">integer</span></span>
+         start from 0, and less than xn:entry_count()
+        </li>
+        <li><span class="parameter">utf8</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+
+
+         (<em>default</em> true)
+        </li>
+    </ul>
 
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><span class="type">integer</span></span>
-        location start from 0
+           <span class="types"><span class="type">x509</span></span>
+        name entry table
     </ol>
 
 
