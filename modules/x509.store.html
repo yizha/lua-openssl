@@ -1,0 +1,395 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>lua-openssl Docmentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>lua-openssl</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_x509_store">Class x509_store </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/csr.html">csr</a></li>
+  <li><strong>x509.store</strong></li>
+</ul>
+<h2>Topics</h2>
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
+  <li><a href="../topics/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>x509.store</code></h1>
+<p>Provide x509_store as lua object.</p>
+<p> create and manage x509 store object</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  store = require&apos;openssl&apos;.x509.store
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new (certs[, crls])</a></td>
+	<td class="summary">create or generate a new x509_store object.</td>
+	</tr>
+</table>
+<h2><a href="#Class_x509_store">Class x509_store </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:depth">x509_store:depth (depth)</a></td>
+	<td class="summary">set verify depth of certificate chains</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:flags">x509_store:flags (flags)</a></td>
+	<td class="summary">set verify flags of certificate chains</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:trust">x509_store:trust (trust)</a></td>
+	<td class="summary">set as trust x509 store</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:purpose">x509_store:purpose (purpose)</a></td>
+	<td class="summary">set prupose of x509 store</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:load">x509_store:load ([filepath[, dirpath]])</a></td>
+	<td class="summary">load certificate from file or dir,not given any paramater will load from defaults path</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:add">x509_store:add (...)</a></td>
+	<td class="summary">add x509 certificate or crl to store
+ paramater support x509 object,x509<em>crl object or array contains x509,x509</em>crl object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_store:add_lookup">x509_store:add_lookup (path[, only='file'[, only='default']])</a></td>
+	<td class="summary">add lookup path for store</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2><a name="Functions"></a>Functions</h2>
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new (certs[, crls])</strong>
+    </dt>
+    <dd>
+    create or generate a new x509_store object.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">certs</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         array of x509 objects, all x509 object will add to store, certs can be empty but not nil
+        </li>
+        <li><span class="parameter">crls</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         array of x509_crl objects, all crl object will add to store
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_store</span></span>
+        object
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/x509.store.html#x509_store">x509_store</a>
+    </ul>
+
+
+</dd>
+</dl>
+    <h2><a name="Class_x509_store"></a>Class x509_store </h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "x509_store:depth"></a>
+    <strong>x509_store:depth (depth)</strong>
+    </dt>
+    <dd>
+    set verify depth of certificate chains
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">depth</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_store:flags"></a>
+    <strong>x509_store:flags (flags)</strong>
+    </dt>
+    <dd>
+    set verify flags of certificate chains
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_store:trust"></a>
+    <strong>x509_store:trust (trust)</strong>
+    </dt>
+    <dd>
+    set as trust x509 store
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">trust</span>
+            <span class="types"><span class="type">boolean</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_store:purpose"></a>
+    <strong>x509_store:purpose (purpose)</strong>
+    </dt>
+    <dd>
+    set prupose of x509 store
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">purpose</span>
+            <span class="types"><span class="type">integer</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_store:load"></a>
+    <strong>x509_store:load ([filepath[, dirpath]])</strong>
+    </dt>
+    <dd>
+    load certificate from file or dir,not given any paramater will load from defaults path
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">filepath</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+        <li><span class="parameter">dirpath</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_store:add"></a>
+    <strong>x509_store:add (...)</strong>
+    </dt>
+    <dd>
+    add x509 certificate or crl to store
+ paramater support x509 object,x509<em>crl object or array contains x509,x509</em>crl object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">...</span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_store:add_lookup"></a>
+    <strong>x509_store:add_lookup (path[, only='file'[, only='default']])</strong>
+    </dt>
+    <dd>
+    add lookup path for store
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">path</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         file or dir path to add
+        </li>
+        <li><span class="parameter">only</span>
+            <span class="types"><span class="type">format</span></span>
+         'pem', 'der' or 'default'
+         (<em>default</em> 'default')
+        </li>
+        <li><span class="parameter">only</span>
+            <span class="types"><span class="type">format</span></span>
+         'pem', 'der' or 'default'
+         (<em>default</em> 'default')
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.2</a></i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>
