@@ -54,10 +54,10 @@
   <li><a href="../modules/ts.html">ts</a></li>
   <li><strong>x509</strong></li>
   <li><a href="../modules/x509.attr.html">x509.attr</a></li>
-  <li><a href="../modules/crl.html">crl</a></li>
+  <li><a href="../modules/x509.crl.html">x509.crl</a></li>
   <li><a href="../modules/x509.extension.html">x509.extension</a></li>
   <li><a href="../modules/x509.name.html">x509.name</a></li>
-  <li><a href="../modules/csr.html">csr</a></li>
+  <li><a href="../modules/x509.req.html">x509.req</a></li>
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
@@ -101,6 +101,10 @@
 	<tr>
 	<td class="name" nowrap><a href="#certtypes">certtypes ([type='standard'])</a></td>
 	<td class="summary">get support certtypes</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verify_cert_error_string">verify_cert_error_string (verify_result)</a></td>
+	<td class="summary">get certificate verify result string message</td>
 	</tr>
 </table>
 <h2><a href="#Class_x509">Class x509 </a></h2>
@@ -368,6 +372,35 @@
 
 
 </dd>
+    <dt>
+    <a name = "verify_cert_error_string"></a>
+    <strong>verify_cert_error_string (verify_result)</strong>
+    </dt>
+    <dd>
+    get certificate verify result string message
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">verify_result</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        result message
+    </ol>
+
+
+
+
+</dd>
 </dl>
     <h2><a name="Class_x509"></a>Class x509 </h2>
 
@@ -529,12 +562,19 @@
 
     <h3>Returns:</h3>
     <ol>
-
+        <li>
            <span class="types"><span class="type">boolean</span></span>
-        result true for check pass
+        result true for check pass</li>
+        <li>
+           <span class="types"><span class="type">integer</span></span>
+        verify result</li>
     </ol>
 
 
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/x509.html#verify_cert_error_string">verify_cert_error_string</a>
+    </ul>
 
 
 </dd>
