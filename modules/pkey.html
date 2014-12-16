@@ -84,7 +84,11 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#new">new ([alg='rsa'[, bits=1024|512[, 3rd[, flags]]]])</a></td>
+	<td class="name" nowrap><a href="#new">new (alg, curvename[, flags])</a></td>
+	<td class="summary">generate a new ec keypair</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#new">new ([alg='rsa'[, bits=1024|512[, alg]]])</a></td>
 	<td class="summary">generate a new keypair</td>
 	</tr>
 	<tr>
@@ -192,7 +196,42 @@
     <dl class="function">
     <dt>
     <a name = "new"></a>
-    <strong>new ([alg='rsa'[, bits=1024|512[, 3rd[, flags]]]])</strong>
+    <strong>new (alg, curvename[, flags])</strong>
+    </dt>
+    <dd>
+    generate a new ec keypair
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , alg must be 'ec'
+        </li>
+        <li><span class="parameter">curvename</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+         this can be integer as curvename NID
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">integer</span></span>
+         when alg is ec need this.
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        object with mapping to EVP_PKEY in openssl
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "new"></a>
+    <strong>new ([alg='rsa'[, bits=1024|512[, alg]]])</strong>
     </dt>
     <dd>
     generate a new keypair
@@ -201,22 +240,17 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-        , accept 'rsa','dsa','dh','ec'
-         (<em>default</em> 'rsa')
+            <span class="types"><span class="type">when</span></span>
+         is rsa give e value default is 0x10001
         </li>
         <li><span class="parameter">bits</span>
             <span class="types"><span class="type">integer</span></span>
         , rsa with 1024,dh with 512
          (<em>default</em> 1024|512)
         </li>
-        <li><span class="parameter">3rd</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">integer</span></span>
-         when alg is ec, give ec_name, when alg is rsa give e value default is 0x10001
-        </li>
-        <li><span class="parameter">flags</span>
-            <span class="types"><span class="type">integer</span></span>
-         when alg is ec need this.
+        <li><span class="parameter">alg</span>
+            <span class="types"><span class="type">when</span></span>
+         is rsa give e value default is 0x10001
         </li>
     </ul>
 

@@ -179,11 +179,19 @@
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#ssl_ctx:verify_mode">ssl_ctx:verify_mode ()</a></td>
-	<td class="summary">get verify_mode</td>
+	<td class="summary">get verify_mode, return number mode and all string modes list</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ssl_ctx:set_verify">ssl_ctx:set_verify (mode[, verifycb=nil])</a></td>
-	<td class="summary">set verify call back</td>
+	<td class="name" nowrap><a href="#ssl_ctx:set_verify">ssl_ctx:set_verify (modes[, verify_cb=nil])</a></td>
+	<td class="summary">set verify callback</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:set_cert_verify">ssl_ctx:set_cert_verify (cert_verify_cb[, arg])</a></td>
+	<td class="summary">set certificate verify callback function</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#ssl_ctx:set_cert_verify">ssl_ctx:set_cert_verify (verify_cb_flag)</a></td>
+	<td class="summary">set certificate verify options</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#ssl_ctx:bio">ssl_ctx:bio (host_addr[, server=true[, autoretry=true]])</a></td>
@@ -887,7 +895,7 @@
     <strong>ssl_ctx:verify_mode ()</strong>
     </dt>
     <dd>
-    get verify_mode
+    get verify_mode, return number mode and all string modes list
 
 
 
@@ -898,35 +906,47 @@
         mode_code</li>
         <li>
            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         mode_string
+        mode_string</li>
+        <li>
+         ...
   none: not verify client cert
   peer: verify client cert
-  fail: if client not have cert, will failure
+  fail<em>if</em>no<em>peer</em>cert: if client not have cert, will failure
   once: verify client only once.</li>
     </ol>
 
 
 
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  mode = {ctx:verify_mode()}
+  <span class="global">print</span>(<span class="string">'integer mode'</span>,mode[<span class="number">1</span>])
+  <span class="keyword">for</span> i=<span class="number">2</span>, #mode <span class="keyword">then</span>
+    <span class="global">print</span>(<span class="string">'string mode:'</span>..mode[i])
+  <span class="keyword">end</span></pre>
+    </ul>
 
 </dd>
     <dt>
     <a name = "ssl_ctx:set_verify"></a>
-    <strong>ssl_ctx:set_verify (mode[, verifycb=nil])</strong>
+    <strong>ssl_ctx:set_verify (modes[, verify_cb=nil])</strong>
     </dt>
     <dd>
-    set verify call back
+    set verify callback
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-        , must be 'none' or 'peer'
+        <li><span class="parameter">modes</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+        , array of mode set to ctx verify_cb
         </li>
-        <li><span class="parameter">verifycb</span>
+        <li><span class="parameter">verify_cb</span>
             <span class="types"><span class="type">function</span></span>
          if mode is 'none', not need this
- verifycb should like int function(int preverify<em>ok,X509</em>STORE_CTX ctx) return 0 to end,1 to continue
+ verify<em>cb must be boolean function(verifyarg) return false to end,true to continue
+ verifyarg has field 'error', 'error</em>string','error<em>depth','current</em>cert', and 'preverify_ok'
          (<em>default</em> nil)
         </li>
     </ul>
@@ -937,6 +957,54 @@
            <span class="types"><span class="type">boolean</span></span>
         result
     </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:set_cert_verify"></a>
+    <strong>ssl_ctx:set_cert_verify (cert_verify_cb[, arg])</strong>
+    </dt>
+    <dd>
+    set certificate verify callback function
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cert_verify_cb</span>
+            <span class="types"><span class="type">function</span></span>
+         boolean function(verifyarg), if nil or none will use openssl default
+ verifyarg has field 'error', 'error<em>string','error</em>depth','current_cert'
+        </li>
+        <li><span class="parameter">arg</span>
+         pass to cert<em>verify</em>cb
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "ssl_ctx:set_cert_verify"></a>
+    <strong>ssl_ctx:set_cert_verify (verify_cb_flag)</strong>
+    </dt>
+    <dd>
+    set certificate verify options
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">verify_cb_flag</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+
+
+
+        </li>
+    </ul>
+
 
 
 
