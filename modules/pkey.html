@@ -96,7 +96,7 @@
 	<td class="summary">get public key from private key object</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#read">read (input[, if=false[, format='auto'[, passhprase]]])</a></td>
+	<td class="name" nowrap><a href="#read">read (input[, prikey=false[, format='auto'[, passhprase]]])</a></td>
 	<td class="summary">read public/private key from data</td>
 	</tr>
 	<tr>
@@ -300,7 +300,7 @@
 </dd>
     <dt>
     <a name = "read"></a>
-    <strong>read (input[, if=false[, format='auto'[, passhprase]]])</strong>
+    <strong>read (input[, prikey=false[, format='auto'[, passhprase]]])</strong>
     </dt>
     <dd>
     read public/private key from data
@@ -312,9 +312,9 @@
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">openssl.bio</span></span>
          string data or bio object
         </li>
-        <li><span class="parameter">if</span>
-            <span class="types"><span class="type">public</span></span>
-         true when input is public key
+        <li><span class="parameter">prikey</span>
+            <span class="types"><span class="type">boolean</span></span>
+         set true when input is private key
          (<em>default</em> false)
         </li>
         <li><span class="parameter">format</span>
