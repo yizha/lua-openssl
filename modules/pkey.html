@@ -33,7 +33,6 @@
 <h2>Contents</h2>
 <ul>
 <li><a href="#Functions">Functions</a></li>
-<li><a href="#Fields">Fields</a></li>
 <li><a href="#Class_evp_pkey">Class evp_pkey </a></li>
 </ul>
 
@@ -92,6 +91,10 @@
 	<td class="summary">generate a new keypair</td>
 	</tr>
 	<tr>
+	<td class="name" nowrap><a href="#new">new (factors)</a></td>
+	<td class="summary">create a new keypair by factors of keypair or get public key only</td>
+	</tr>
+	<tr>
 	<td class="name" nowrap><a href="#get_public">get_public (priv_key)</a></td>
 	<td class="summary">get public key from private key object</td>
 	</tr>
@@ -131,13 +134,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#open">open (pkey, ekey, string[, md_alg='RC4'])</a></td>
 	<td class="summary">open and ecrypted seal data with private key</td>
-	</tr>
-</table>
-<h2><a href="#Fields">Fields</a></h2>
-<table class="function_list">
-	<tr>
-	<td class="name" nowrap><a href="#factors">factors</a></td>
-	<td class="summary">create a new keypair</td>
 	</tr>
 </table>
 <h2><a href="#Class_evp_pkey">Class evp_pkey </a></h2>
@@ -263,6 +259,45 @@
 
 
 
+
+</dd>
+    <dt>
+    <a name = "new"></a>
+    <strong>new (factors)</strong>
+    </dt>
+    <dd>
+    create a new keypair by factors of keypair or get public key only
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">factors</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         to create private/public key, key alg only accept accept 'rsa','dsa','dh','ec' and must exist</br>
+  when arg is rsa, table may with key n,e,d,p,q,dmp1,dmq1,iqmp, both are binary string or openssl.bn<br>
+  when arg is dsa, table may with key p,q,g,priv<em>key,pub</em>key, both are binary string or openssl.bn<br>
+  when arg is dh, table may with key p,g,priv<em>key,pub</em>key, both are binary string or openssl.bn<br>
+  when arg is ec, table may with D,X,Y,Z,both are binary string or openssl.bn<br>
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_pkey</span></span>
+        object with mapping to EVP_PKEY in openssl
+    </ol>
+
+
+
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">
+  <span class="comment">--create rsa public key
+</span>    pubkey = new({alg=<span class="string">'rsa'</span>,n=...,e=...}
+  <span class="comment">--create new rsa
+</span>    rsa = new({alg=<span class="string">'rsa'</span>,n=...,q=...,e=...,...}</pre>
+    </ul>
 
 </dd>
     <dt>
@@ -628,33 +663,6 @@
            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data decrypted message or nil on failure
     </ol>
-
-
-
-
-</dd>
-</dl>
-    <h2><a name="Fields"></a>Fields</h2>
-    <dl class="function">
-    <dt>
-    <a name = "factors"></a>
-    <strong>factors</strong>
-    </dt>
-    <dd>
-    create a new keypair
-
-
-    <ul>
-        <li><span class="parameter">factors</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-         to create private/public key, key alg only accept accept 'rsa','dsa','dh','ec' and must exist</br>
-  when arg is rsa, table may with key n,e,d,p,q,dmp1,dmq1,iqmp,both are string value</br>
-  when arg is dsa, table may with key p,q,g,priv<em>key,pub</em>key,both are string value</br>
-  when arg is dh, table may with key p,g,priv<em>key,pub</em>key,both are string value</br>
-  when arg is ec, table may with D,X,Y,Z,both are string value</br>
-        </li>
-    </ul>
-
 
 
 
