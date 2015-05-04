@@ -101,6 +101,14 @@
 	<td class="name" nowrap><a href="#digest">digest (alg, msg[, raw])</a></td>
 	<td class="summary">quick method to generate digest result</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#signInit">signInit (alg[, object=nil])</a></td>
+	<td class="summary">create digest object for sign</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#verifyInit">verifyInit (alg[, object=nil])</a></td>
+	<td class="summary">create digest object for verify</td>
+	</tr>
 </table>
 <h2><a href="#Class_evp_digest">Class evp_digest </a></h2>
 <table class="function_list">
@@ -115,6 +123,14 @@
 	<tr>
 	<td class="name" nowrap><a href="#evp_digest:digest">evp_digest:digest (msg[, eng])</a></td>
 	<td class="summary">compute msg digest result</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest:signInit">evp_digest:signInit ([object=nil])</a></td>
+	<td class="summary">create digest object for sign</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest:verifyInit">evp_digest:verifyInit ([object=nil])</a></td>
+	<td class="summary">create digest object for verify</td>
 	</tr>
 </table>
 <h2><a href="#Class_evp_digest_ctx">Class evp_digest_ctx </a></h2>
@@ -134,6 +150,22 @@
 	<tr>
 	<td class="name" nowrap><a href="#evp_digest_ctx:reset">evp_digest_ctx:reset ()</a></td>
 	<td class="summary">reset evp<em>diget</em>ctx to reuse</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:signUpdate">evp_digest_ctx:signUpdate (data)</a></td>
+	<td class="summary">feed data for sign to get signature</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:verifyUpdate">evp_digest_ctx:verifyUpdate (data)</a></td>
+	<td class="summary">feed data for verify with signature</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:signFinal">evp_digest_ctx:signFinal (private)</a></td>
+	<td class="summary">get result of sign</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_digest_ctx:verifyFinal">evp_digest_ctx:verifyFinal (signature)</a></td>
+	<td class="summary">get verify result</td>
 	</tr>
 </table>
 
@@ -270,6 +302,78 @@
 
 
 </dd>
+    <dt>
+    <a name = "signInit"></a>
+    <strong>signInit (alg[, object=nil])</strong>
+    </dt>
+    <dd>
+    create digest object for sign
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">engine</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest_ctx</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "verifyInit"></a>
+    <strong>verifyInit (alg[, object=nil])</strong>
+    </dt>
+    <dd>
+    create digest object for verify
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">alg</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+         name, nid or object identity
+        </li>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">engine</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest_ctx</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
 </dl>
     <h2><a name="Class_evp_digest"></a>Class evp_digest </h2>
 
@@ -355,6 +459,70 @@
 
            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         result a binary hash value for msg
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest:signInit"></a>
+    <strong>evp_digest:signInit ([object=nil])</strong>
+    </dt>
+    <dd>
+    create digest object for sign
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">engine</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest_ctx</span></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest:verifyInit"></a>
+    <strong>evp_digest:verifyInit ([object=nil])</strong>
+    </dt>
+    <dd>
+    create digest object for verify
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">object</span>
+            <span class="types"><span class="type">engine</span></span>
+
+
+
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">evp_digest_ctx</span></span>
+
+
+
     </ol>
 
 
@@ -460,6 +628,116 @@
 
 
 </dd>
+    <dt>
+    <a name = "evp_digest_ctx:signUpdate"></a>
+    <strong>evp_digest_ctx:signUpdate (data)</strong>
+    </dt>
+    <dd>
+    feed data for sign to get signature
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be signed
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest_ctx:verifyUpdate"></a>
+    <strong>evp_digest_ctx:verifyUpdate (data)</strong>
+    </dt>
+    <dd>
+    feed data for verify with signature
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be verified
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest_ctx:signFinal"></a>
+    <strong>evp_digest_ctx:signFinal (private)</strong>
+    </dt>
+    <dd>
+    get result of sign
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">private</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         key to do sign
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        singed result
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_digest_ctx:verifyFinal"></a>
+    <strong>evp_digest_ctx:verifyFinal (signature)</strong>
+    </dt>
+    <dd>
+    get verify result
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">signature</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result, true for verify pass
+    </ol>
+
+
+
+
+</dd>
 </dl>
 
 
@@ -467,7 +745,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-03-16 20:36:13 </i>
+<i style="float:right;">Last updated 2015-05-04 10:13:30 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
