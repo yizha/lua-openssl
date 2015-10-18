@@ -38,7 +38,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -61,7 +61,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -99,7 +99,7 @@
 	<td class="summary">get public key from private key object</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#read">read (input[, prikey=false[, format='auto'[, passhprase]]])</a></td>
+	<td class="name" nowrap><a href="#read">read (input[, pem=false[, format='auto'[, passhprase]]])</a></td>
 	<td class="summary">read public/private key from data</td>
 	</tr>
 	<tr>
@@ -139,8 +139,12 @@
 <h2><a href="#Class_evp_pkey">Class evp_pkey </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export ([export_private=false[, raw_key=false[, pem=true[, passphrase]]]])</a></td>
-	<td class="summary">export evp_pkey as string</td>
+	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export ([pem=true[, raw_key=false[, passphrase]]])</a></td>
+	<td class="summary">export evp_pkey as pem string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export (pem[, raw_key=false[, passphrase]])</a></td>
+	<td class="summary">export evp_pkey as der string</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#evp_pkey:parse">evp_pkey:parse ()</a></td>
@@ -160,7 +164,7 @@
 	<td class="summary">sign message with private key</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#evp_pkey:verify">evp_pkey:verify (data, signature[, md_alg='SHA1'], true)</a></td>
+	<td class="name" nowrap><a href="#evp_pkey:verify">evp_pkey:verify (data, signature[, md_alg='SHA1'])</a></td>
 	<td class="summary">verify signed message with public key</td>
 	</tr>
 	<tr>
@@ -188,7 +192,7 @@
 <br/>
 
 
-    <h2><a name="Functions"></a>Functions</h2>
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
     <dt>
@@ -339,7 +343,7 @@
 </dd>
     <dt>
     <a name = "read"></a>
-    <strong>read (input[, prikey=false[, format='auto'[, passhprase]]])</strong>
+    <strong>read (input[, pem=false[, format='auto'[, passhprase]]])</strong>
     </dt>
     <dd>
     read public/private key from data
@@ -351,9 +355,9 @@
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">openssl.bio</span></span>
          string data or bio object
         </li>
-        <li><span class="parameter">prikey</span>
+        <li><span class="parameter">pem</span>
             <span class="types"><span class="type">boolean</span></span>
-         set true when input is private key
+         prikey set true when input is private key
          (<em>default</em> false)
         </li>
         <li><span class="parameter">format</span>
@@ -363,7 +367,7 @@
         </li>
         <li><span class="parameter">passhprase</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         when not public need this
+         when input is private key, or key types 'ec','rsa','dsa','dh'
          (<em>optional</em>)
         </li>
     </ul>
@@ -463,7 +467,7 @@
     </dt>
     <dd>
     encrypt message with public key
- encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes. <br/>
+ encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes.
  They are: pkcs1, sslv23, no, oaep, x931, pss.
 
 
@@ -674,38 +678,82 @@
 
 </dd>
 </dl>
-    <h2><a name="Class_evp_pkey"></a>Class evp_pkey </h2>
+    <h2 class="section-header has-description"><a name="Class_evp_pkey"></a>Class evp_pkey </h2>
 
-        openssl.evp_pkey object
+          <div class="section-description">
+          openssl.evp_pkey object
+          </div>
     <dl class="function">
     <dt>
     <a name = "evp_pkey:export"></a>
-    <strong>evp_pkey:export ([export_private=false[, raw_key=false[, pem=true[, passphrase]]]])</strong>
+    <strong>evp_pkey:export ([pem=true[, raw_key=false[, passphrase]]])</strong>
     </dt>
     <dd>
-    export evp_pkey as string
+    export evp_pkey as pem string
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">export_private</span>
-            <span class="types"><span class="type">boolean</span></span>
-        , true for export private, or public only
-         (<em>default</em> false)
-        </li>
-        <li><span class="parameter">raw_key</span>
-            <span class="types"><span class="type">boolean</span></span>
-         true for export low layer key just rsa,dsa,dc...
-         (<em>default</em> false)
-        </li>
         <li><span class="parameter">pem</span>
             <span class="types"><span class="type">boolean</span></span>
          default export as pem format, false export as der string
          (<em>default</em> true)
         </li>
+        <li><span class="parameter">raw_key</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for export low layer key just rsa,dsa,ec, and public key only support RSA
+         (<em>default</em> false)
+        </li>
         <li><span class="parameter">passphrase</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         if given, export key will encrypt with des-cbc-ede
+
+<p> if given, export key will encrypt with des-cbc-ede,</p>
+<pre><code>only need when export private key
+</code></pre>
+
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+
+
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "evp_pkey:export"></a>
+    <strong>evp_pkey:export (pem[, raw_key=false[, passphrase]])</strong>
+    </dt>
+    <dd>
+    export evp_pkey as der string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">pem</span>
+            <span class="types"><span class="type">boolean</span></span>
+         set false to export as der string
+        </li>
+        <li><span class="parameter">raw_key</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for export low layer key just rsa,dsa,ec, and public key only support RSA
+         (<em>default</em> false)
+        </li>
+        <li><span class="parameter">passphrase</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+
+<p> if given, export key will encrypt with des-cbc-ede,</p>
+<pre><code>only need when export private key
+</code></pre>
+
          (<em>optional</em>)
         </li>
     </ul>
@@ -829,7 +877,7 @@
 </dd>
     <dt>
     <a name = "evp_pkey:verify"></a>
-    <strong>evp_pkey:verify (data, signature[, md_alg='SHA1'], true)</strong>
+    <strong>evp_pkey:verify (data, signature[, md_alg='SHA1'])</strong>
     </dt>
     <dd>
     verify signed message with public key
@@ -850,12 +898,14 @@
          default use sha-1
          (<em>default</em> 'SHA1')
         </li>
-        <li><span class="parameter">true</span>
-            <span class="types"><span class="type">boolean</span></span>
-         for pass verify
-        </li>
     </ul>
 
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        true for pass verify
+    </ol>
 
 
 
@@ -867,7 +917,7 @@
     </dt>
     <dd>
     encrypt message with public key
- encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes. <br/>
+ encrypt length of message must not longer than key size, if shorter will do padding,currently supports 6 padding modes.
  They are: pkcs1, sslv23, no, oaep, x931, pss.
 
 
@@ -1020,7 +1070,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-05-04 10:13:30 </i>
+<i style="float:right;">Last updated 2015-10-18 20:46:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

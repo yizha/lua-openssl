@@ -39,7 +39,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><strong>asn1</strong></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -62,7 +62,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -102,6 +102,18 @@
 	<tr>
 	<td class="name" nowrap><a href="#txt2nid">txt2nid (txt)</a></td>
 	<td class="summary">get nid for txt, which can be short name, long name, or numerical oid</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#tostring">tostring (clsortag, range)</a></td>
+	<td class="summary">make tag, class number to string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#get_object">get_object (der[, start=1[, stop=-i]])</a></td>
+	<td class="summary">parse der encoded string</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#put_object">put_object (tag, class[, length=nil[, constructed=nil]])</a></td>
+	<td class="summary">do der encode and return encoded string partly head or full</td>
 	</tr>
 </table>
 <h2><a href="#Class_asn1_object">Class asn1_object </a></h2>
@@ -183,7 +195,7 @@
 <br/>
 
 
-    <h2><a name="Functions"></a>Functions</h2>
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
 
     <dl class="function">
     <dt>
@@ -343,10 +355,145 @@
 
 
 </dd>
-</dl>
-    <h2><a name="Class_asn1_object"></a>Class asn1_object </h2>
+    <dt>
+    <a name = "tostring"></a>
+    <strong>tostring (clsortag, range)</strong>
+    </dt>
+    <dd>
+    make tag, class number to string
 
-        openssl.asn1_object object
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">clsortag</span>
+            <span class="types"><span class="type">number</span></span>
+         which to string
+        </li>
+        <li><span class="parameter">range</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         only accept 'class' or 'tag'
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "get_object"></a>
+    <strong>get_object (der[, start=1[, stop=-i]])</strong>
+    </dt>
+    <dd>
+    parse der encoded string
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">der</span>
+            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         string
+        </li>
+        <li><span class="parameter">start</span>
+            <span class="types"><span class="type">number</span></span>
+         offset to parse
+         (<em>default</em> 1)
+        </li>
+        <li><span class="parameter">stop</span>
+            <span class="types"><span class="type">number</span></span>
+         offset to parse
+  this like string.sub()
+         (<em>default</em> -i)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        tag</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        class</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        parsed data start offset</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        parsed data stop offset</li>
+        <li>
+           <span class="types"><span class="type">boolean</span></span>
+        true for constructed data</li>
+    </ol>
+     <h3>Or</h3>
+    <ol>
+        <li>
+           <span class="types"><span class="type">nil</span></span>
+        for fail</li>
+        <li>
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        error msg</li>
+        <li>
+           <span class="types"><span class="type">number</span></span>
+        inner error code</li>
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "put_object"></a>
+    <strong>put_object (tag, class[, length=nil[, constructed=nil]])</strong>
+    </dt>
+    <dd>
+    do der encode and return encoded string partly head or full
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">tag</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">class</span>
+            <span class="types"><span class="type">number</span></span>
+
+
+
+        </li>
+        <li><span class="parameter">length</span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         or date to encode, defualt will make
+ indefinite length constructed
+         (<em>default</em> nil)
+        </li>
+        <li><span class="parameter">constructed</span>
+            <span class="types"><span class="type">boolean</span></span>
+         or not
+         (<em>default</em> nil)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        der encoded string or head when not give data
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_asn1_object"></a>Class asn1_object </h2>
+
+          <div class="section-description">
+          openssl.asn1_object object
+          </div>
     <dl class="function">
     <dt>
     <a name = "asn1_object:nid"></a>
@@ -527,9 +674,11 @@
 
 </dd>
 </dl>
-    <h2><a name="Class_asn1_string"></a>Class asn1_string </h2>
+    <h2 class="section-header has-description"><a name="Class_asn1_string"></a>Class asn1_string </h2>
 
-        openssl.asn1_string object
+          <div class="section-description">
+          openssl.asn1_string object
+          </div>
     <dl class="function">
     <dt>
     <a name = "asn1_string:type"></a>
@@ -753,7 +902,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-05-04 10:13:30 </i>
+<i style="float:right;">Last updated 2015-10-18 20:46:24 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
