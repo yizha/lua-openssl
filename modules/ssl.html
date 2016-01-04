@@ -39,7 +39,7 @@
 
 
 <h2>Modules</h2>
-<ul class="nowrap">
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -62,7 +62,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="">
+<ul class="$(kind=='Topics' and '' or 'nowrap'">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -178,11 +178,11 @@
 	<td class="summary">get verify_mode, return number mode and all string modes list</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ssl_ctx:verify_mode">ssl_ctx:verify_mode (modes[, verify_cb=nil])</a></td>
-	<td class="summary">set verify mode and callback</td>
+	<td class="name" nowrap><a href="#ssl_ctx:verify_mode">ssl_ctx:verify_mode (mode[, ssl=nil])</a></td>
+	<td class="summary">set ssl verify mode and callback</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#ssl_ctx:set_cert_verify">ssl_ctx:set_cert_verify (cert_verify_cb[, arg])</a></td>
+	<td class="name" nowrap><a href="#ssl_ctx:set_cert_verify">ssl_ctx:set_cert_verify ([cert_verify_cb])</a></td>
 	<td class="summary">set certificate verify callback function</td>
 	</tr>
 	<tr>
@@ -799,8 +799,7 @@
     <ul>
         <li><span class="parameter">quiet</span>
             <span class="types"><span class="type">boolean</span></span>
-
- When setting the "quiet shutdown" flag to 1, <strong><em>SSL:shutdown</em></strong> will set the internal flags
+         When setting the "quiet shutdown" flag to 1, <strong><em>SSL:shutdown</em></strong> will set the internal flags
  to SSL<em>SENT</em>SHUTDOWN|SSL<em>RECEIVED</em>SHUTDOWN. <strong><em>SSL:shutdown</em></strong> then behaves like
  <strong>*SSL:set_shutdown*</strong> called with SSL<em>SENT</em>SHUTDOWN|SSL<em>RECEIVED</em>SHUTDOWN.
  The session is thus considered to be shutdown, but no "close notify" alert
@@ -974,7 +973,7 @@
          ...
   none: not verify client cert
   peer: verify client cert
-  fail<em>if</em>no<em>peer</em>cert: if client not have cert, will failure
+  fail: if client not have cert, will failure
   once: verify client only once.</li>
     </ol>
 
@@ -993,22 +992,22 @@
 </dd>
     <dt>
     <a name = "ssl_ctx:verify_mode"></a>
-    <strong>ssl_ctx:verify_mode (modes[, verify_cb=nil])</strong>
+    <strong>ssl_ctx:verify_mode (mode[, ssl=nil])</strong>
     </dt>
     <dd>
-    set verify mode and callback
+    set ssl verify mode and callback
 
 
     <h3>Parameters:</h3>
     <ul>
-        <li><span class="parameter">modes</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-        , array of mode set to ctx verify_cb
+        <li><span class="parameter">mode</span>
+            <span class="types"><span class="type">number</span></span>
+        , mode set to ctx, must be ssl.none or ssl.peer, and ssl.peer support combine with ssl.fail or ssl.once
         </li>
-        <li><span class="parameter">verify_cb</span>
+        <li><span class="parameter">ssl</span>
             <span class="types"><span class="type">function</span></span>
-         nil will use default, when mode is 'none', will be ignore this,
- verify<em>cb must be boolean function(verifyarg) return false to end,true to continue
+         verify callback in lua function, not give will use default openssl callback, when mode is 'none', will be ignore this
+ verify<em>cb must be boolean function(verifyarg) prototype, return true to continue or false to end ssl handshake
  verifyarg has field 'error', 'error</em>string','error<em>depth','current</em>cert', and 'preverify_ok'
          (<em>default</em> nil)
         </li>
@@ -1027,7 +1026,7 @@
 </dd>
     <dt>
     <a name = "ssl_ctx:set_cert_verify"></a>
-    <strong>ssl_ctx:set_cert_verify (cert_verify_cb[, arg])</strong>
+    <strong>ssl_ctx:set_cert_verify ([cert_verify_cb])</strong>
     </dt>
     <dd>
     set certificate verify callback function
@@ -1037,11 +1036,8 @@
     <ul>
         <li><span class="parameter">cert_verify_cb</span>
             <span class="types"><span class="type">function</span></span>
-         boolean function(verifyarg), if nil or none will use openssl default
- verifyarg has field 'error', 'error<em>string','error</em>depth','current_cert'
-        </li>
-        <li><span class="parameter">arg</span>
-         pass to cert<em>verify</em>cb
+         with boolean function(verifyargs) prototype, if nil or none will use openssl default callback
+ verifyargs has field 'error', 'error<em>string','error</em>depth','current_cert'
          (<em>optional</em>)
         </li>
     </ul>
@@ -1063,9 +1059,7 @@
     <ul>
         <li><span class="parameter">verify_cb_flag</span>
             <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
-
-
-
+         support field always<em>continue with boolean value and verify</em>depth with number value.
         </li>
     </ul>
 
@@ -1953,7 +1947,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2015-10-18 20:46:24 </i>
+<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
