@@ -38,7 +38,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -61,7 +61,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -74,8 +74,7 @@
 <p> Sometime when you make CSR,TS or X509, you maybe need to use this.</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  name = require(&apos;openssl&apos;).x509.name
+        <pre class="example">name = require(&apos;openssl&apos;).x509.name
 </pre>
     </ul>
 
@@ -161,7 +160,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">array</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          include name node
         </li>
         <li><span class="parameter">utf8</span>
@@ -182,13 +181,12 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  name = <span class="global">require</span><span class="string">'openssl'</span>.x509.name
-  subject = name.new{
-    {C=<span class="string">'CN'</span>},
-    {O=<span class="string">'kkhub.com'</span>},
-    {CN=<span class="string">'zhaozg'</span>}
-  }</pre>
+        <pre class="example">name = <span class="global">require</span><span class="string">'openssl'</span>.x509.name
+subject = name.new{
+  {C=<span class="string">'CN'</span>},
+  {O=<span class="string">'kkhub.com'</span>},
+  {CN=<span class="string">'zhaozg'</span>}
+}</pre>
     </ul>
 
 </dd>
@@ -203,7 +201,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">content</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          DER encoded string
         </li>
     </ul>
@@ -238,7 +236,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         line, name as oneline text
     </ol>
 
@@ -277,7 +275,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">md</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">nid</span> or <span class="type">openssl.evp_md</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">nid</span> or <span class="type">openssl.evp_md</span></span>
          method of digest
         </li>
     </ul>
@@ -285,7 +283,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         digest digest value by given alg of x509_name
     </ol>
 
@@ -349,7 +347,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         names
     </ol>
 
@@ -388,11 +386,9 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-
-  name1 = name.new({...})
-  name2 = name1:dup()
-  <span class="global">assert</span>(name1:cmp(name2)==(name1==name2))</pre>
+        <pre class="example">name1 = name.new({...})
+name2 = name1:dup()
+<span class="global">assert</span>(name1:cmp(name2)==(name1==name2))</pre>
     </ul>
 
 </dd>
@@ -408,7 +404,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         der
     </ol>
 
@@ -447,7 +443,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">identid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
          for asn1_object
         </li>
         <li><span class="parameter">lastpos</span>
@@ -460,7 +456,7 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 </li>
@@ -520,11 +516,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">identid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">integer</span> or <span class="type">asn1_object</span></span>
          for asn1_object
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          to add
         </li>
         <li><span class="parameter">utf8</span>
@@ -587,8 +583,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

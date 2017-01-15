@@ -38,7 +38,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -61,7 +61,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -76,7 +76,8 @@
 </p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">pkey = require&apos;openssl&apos;.pkey</pre>
+        <pre class="example">pkey = require&apos;openssl&apos;.pkey
+</pre>
     </ul>
 
 
@@ -87,7 +88,7 @@
 	<td class="summary">generate a new ec keypair</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#new">new ([alg='rsa'[, bits=1024|512[, alg]]])</a></td>
+	<td class="name" nowrap><a href="#new">new ([alg='rsa'[, bits=1024|512[, when]]])</a></td>
 	<td class="summary">generate a new keypair</td>
 	</tr>
 	<tr>
@@ -139,12 +140,8 @@
 <h2><a href="#Class_evp_pkey">Class evp_pkey </a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export ([pem=true[, raw_key=false[, passphrase]]])</a></td>
-	<td class="summary">export evp_pkey as pem string</td>
-	</tr>
-	<tr>
-	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export (pem[, raw_key=false[, passphrase]])</a></td>
-	<td class="summary">export evp_pkey as der string</td>
+	<td class="name" nowrap><a href="#evp_pkey:export">evp_pkey:export ([pem=true[, raw=false[, passphrase]]])</a></td>
+	<td class="summary">export evp_pkey as pem/der string</td>
 	</tr>
 	<tr>
 	<td class="name" nowrap><a href="#evp_pkey:parse">evp_pkey:parse ()</a></td>
@@ -206,11 +203,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , alg must be 'ec'
         </li>
         <li><span class="parameter">curvename</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">number</span></span>
          this can be integer as curvename NID
         </li>
         <li><span class="parameter">flags</span>
@@ -233,7 +230,7 @@
 </dd>
     <dt>
     <a name = "new"></a>
-    <strong>new ([alg='rsa'[, bits=1024|512[, alg]]])</strong>
+    <strong>new ([alg='rsa'[, bits=1024|512[, when]]])</strong>
     </dt>
     <dd>
     generate a new keypair
@@ -242,18 +239,18 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">alg</span>
-            <span class="types"><span class="type">when</span></span>
-         is rsa give e value default is 0x10001
-         (<em>optional</em>)
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+        , accept 'rsa','dsa','dh'
+         (<em>default</em> 'rsa')
         </li>
         <li><span class="parameter">bits</span>
             <span class="types"><span class="type">integer</span></span>
         , rsa with 1024,dh with 512
          (<em>default</em> 1024|512)
         </li>
-        <li><span class="parameter">alg</span>
-            <span class="types"><span class="type">when</span></span>
-         is rsa give e value default is 0x10001
+        <li><span class="parameter">when</span>
+            <span class="types"><span class="type">integer</span></span>
+         alg is rsa give e value default is 0x10001
          (<em>optional</em>)
         </li>
     </ul>
@@ -280,7 +277,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">factors</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          to create private/public key, key alg only accept accept 'rsa','dsa','dh','ec' and must exist</br>
   when arg is rsa, table may with key n,e,d,p,q,dmp1,dmq1,iqmp, both are binary string or openssl.bn<br>
   when arg is dsa, table may with key p,q,g,priv<em>key,pub</em>key, both are binary string or openssl.bn<br>
@@ -300,11 +297,10 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  <span class="comment">--create rsa public key
-</span>    pubkey = new({alg=<span class="string">'rsa'</span>,n=...,e=...}
-  <span class="comment">--create new rsa
-</span>    rsa = new({alg=<span class="string">'rsa'</span>,n=...,q=...,e=...,...}</pre>
+        <pre class="example"><span class="comment">--create rsa public key
+</span>  pubkey = new({alg=<span class="string">'rsa'</span>,n=...,e=...}
+<span class="comment">--create new rsa
+</span>  rsa = new({alg=<span class="string">'rsa'</span>,n=...,q=...,e=...,...}</pre>
     </ul>
 
 </dd>
@@ -352,7 +348,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">input</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">openssl.bio</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">openssl.bio</span></span>
          string data or bio object
         </li>
         <li><span class="parameter">priv</span>
@@ -366,7 +362,7 @@
          (<em>default</em> 'auto')
         </li>
         <li><span class="parameter">passhprase</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          when input is private key, or key types 'ec','rsa','dsa','dh'
          (<em>optional</em>)
         </li>
@@ -402,11 +398,11 @@
          key used to sign message
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data be signed
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
          default use sha-1
          (<em>default</em> 'SHA1')
         </li>
@@ -415,7 +411,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         signed message
     </ol>
 
@@ -438,15 +434,15 @@
          key used to verify message
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data be signed
         </li>
         <li><span class="parameter">signature</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          signed result
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
          default use sha-1
          (<em>default</em> 'SHA1')
         </li>
@@ -478,11 +474,11 @@
          key used to encrypted message
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be encrypted
         </li>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
          padding padding mode
         </li>
     </ul>
@@ -490,7 +486,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         encrypted message
     </ol>
 
@@ -514,11 +510,11 @@
          key used to decrypted message
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be decrypted
         </li>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
          padding padding mode
         </li>
     </ul>
@@ -526,7 +522,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         result
     </ol>
      <h3>Or</h3>
@@ -555,15 +551,15 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">pubkeys</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          public keys to encrypt secret key
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be encrypted
         </li>
         <li><span class="parameter">alg</span>
-            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -574,10 +570,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data encrypted</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         ekey secret key encrypted by public key</li>
         <li>
            <span class="types"><span class="type">stringiv</span></span>
@@ -606,11 +602,11 @@
          public keys to encrypt secret key
         </li>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be encrypted
         </li>
         <li><span class="parameter">alg</span>
-            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -621,13 +617,13 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data encrypted</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         skey secret key encrypted by public key</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         iv</li>
     </ol>
 
@@ -650,15 +646,15 @@
          private key used to open encrypted secret key
         </li>
         <li><span class="parameter">ekey</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          encrypted secret key
         </li>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          iv
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><span class="type">evp_cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">evp_cipher</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -669,7 +665,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data decrypted message or nil on failure
     </ol>
 
@@ -686,10 +682,10 @@
     <dl class="function">
     <dt>
     <a name = "evp_pkey:export"></a>
-    <strong>evp_pkey:export ([pem=true[, raw_key=false[, passphrase]]])</strong>
+    <strong>evp_pkey:export ([pem=true[, raw=false[, passphrase]]])</strong>
     </dt>
     <dd>
-    export evp_pkey as pem string
+    export evp_pkey as pem/der string
 
 
     <h3>Parameters:</h3>
@@ -699,18 +695,15 @@
          default export as pem format, false export as der string
          (<em>default</em> true)
         </li>
-        <li><span class="parameter">raw_key</span>
+        <li><span class="parameter">raw</span>
             <span class="types"><span class="type">boolean</span></span>
-         true for export low layer key just rsa,dsa,ec, and public key only support RSA
+         true for export low layer key just rsa,dsa,ec
          (<em>default</em> false)
         </li>
         <li><span class="parameter">passphrase</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-<p> if given, export key will encrypt with des-cbc-ede,</p>
-<pre><code>only need when export private key
-</code></pre>
-
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         if given, export key will encrypt with des-cbc-ede,
+ only need when export private key
          (<em>optional</em>)
         </li>
     </ul>
@@ -718,50 +711,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-
-
-    </ol>
-
-
-
-
-</dd>
-    <dt>
-    <a name = "evp_pkey:export"></a>
-    <strong>evp_pkey:export (pem[, raw_key=false[, passphrase]])</strong>
-    </dt>
-    <dd>
-    export evp_pkey as der string
-
-
-    <h3>Parameters:</h3>
-    <ul>
-        <li><span class="parameter">pem</span>
-            <span class="types"><span class="type">boolean</span></span>
-         set false to export as der string
-        </li>
-        <li><span class="parameter">raw_key</span>
-            <span class="types"><span class="type">boolean</span></span>
-         true for export low layer key just rsa,dsa,ec, and public key only support RSA
-         (<em>default</em> false)
-        </li>
-        <li><span class="parameter">passphrase</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-
-<p> if given, export key will encrypt with des-cbc-ede,</p>
-<pre><code>only need when export private key
-</code></pre>
-
-         (<em>optional</em>)
-        </li>
-    </ul>
-
-    <h3>Returns:</h3>
-    <ol>
-
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -783,7 +733,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         infos with key bits,pkey,type, pkey may be rsa,dh,dsa, show as table with factor hex encoded bignum
     </ol>
 
@@ -823,7 +773,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">remote_public_key</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -833,7 +783,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -854,11 +804,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data be signed
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
          default use sha-1
          (<em>default</em> 'SHA1')
         </li>
@@ -867,7 +817,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         signed message
     </ol>
 
@@ -886,15 +836,15 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data be signed
         </li>
         <li><span class="parameter">signature</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          signed result
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">env_digest</span></span>
          default use sha-1
          (<em>default</em> 'SHA1')
         </li>
@@ -924,11 +874,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be encrypted
         </li>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
          padding padding mode
         </li>
     </ul>
@@ -936,7 +886,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         encrypted message
     </ol>
 
@@ -956,11 +906,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be decrypted
         </li>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string[opt='pkcs1']</a></span>
          padding padding mode
         </li>
     </ul>
@@ -968,7 +918,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         result
     </ol>
      <h3>Or</h3>
@@ -996,11 +946,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          data to be encrypted
         </li>
         <li><span class="parameter">alg</span>
-            <span class="types"><span class="type">cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">cipher</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1011,13 +961,13 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data encrypted</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         skey secret key encrypted by public key</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         iv</li>
     </ol>
 
@@ -1036,15 +986,15 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">ekey</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          encrypted secret key
         </li>
         <li><span class="parameter">string</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          iv
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><span class="type">evp_cipher</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">evp_cipher</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1055,7 +1005,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data decrypted message or nil on failure
     </ol>
 
@@ -1069,8 +1019,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

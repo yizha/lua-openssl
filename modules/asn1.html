@@ -39,7 +39,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><strong>asn1</strong></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -62,7 +62,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -75,8 +75,7 @@
 <p> Sometime when you want to custome x509, you maybe need to use this.</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  asn1 = require(&apos;openssl&apos;).asn1
+        <pre class="example">asn1 = require(&apos;openssl&apos;).asn1
 </pre>
     </ul>
 
@@ -209,7 +208,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">name_or_oid</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
           short name,long name or oid string
         </li>
         <li><span class="parameter">no_name</span>
@@ -276,7 +275,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">options</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          have sn, ln, oid keys to create asn1_object
         </li>
     </ul>
@@ -309,11 +308,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          to create new asn1_string
         </li>
         <li><span class="parameter">type</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          asn1 string type, defult with 'utf8'
          (<em>optional</em>)
         </li>
@@ -339,7 +338,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">txt</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          which get to nid
         </li>
     </ul>
@@ -370,7 +369,7 @@
          which to string
         </li>
         <li><span class="parameter">range</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          only accept 'class' or 'tag'
         </li>
     </ul>
@@ -391,7 +390,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">der</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          string
         </li>
         <li><span class="parameter">start</span>
@@ -431,7 +430,7 @@
            <span class="types"><span class="type">nil</span></span>
         for fail</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         error msg</li>
         <li>
            <span class="types"><span class="type">number</span></span>
@@ -465,7 +464,7 @@
 
         </li>
         <li><span class="parameter">length</span>
-            <span class="types"><span class="type">number</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          or date to encode, defualt will make
  indefinite length constructed
          (<em>default</em> nil)
@@ -480,7 +479,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         der encoded string or head when not give data
     </ol>
 
@@ -527,10 +526,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         short name of asn1_object</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         long name of asn1_object</li>
     </ol>
 
@@ -550,7 +549,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         short name of asn1_object
     </ol>
 
@@ -570,7 +569,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         long name of asn1_object
     </ol>
 
@@ -598,7 +597,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         long or short name, even oid of asn1_object
     </ol>
 
@@ -665,7 +664,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         asn1_object data
     </ol>
 
@@ -692,7 +691,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         type of asn1_string
     </ol>
 
@@ -716,7 +715,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         raw data of asn1_string
     </ol>
 
@@ -735,7 +734,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          set to asn1_string
         </li>
     </ul>
@@ -746,7 +745,7 @@
            <span class="types"><span class="type">boolean</span></span>
         success if value set true, or follow by errmsg</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail error message</li>
     </ol>
 
@@ -766,7 +765,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         utf8 encoded string
     </ol>
 
@@ -786,7 +785,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         printable encoded string
     </ol>
 
@@ -834,11 +833,10 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  <span class="keyword">local</span> astr = asn1.new_string(<span class="string">'ABCD'</span>)
-  <span class="global">print</span>(<span class="string">'length:'</span>,#astr)
-  <span class="global">print</span>(<span class="string">'length:'</span>,astr:length())
-  <span class="global">assert</span>(#astr==astr:length,<span class="string">"must equals"</span>)</pre>
+        <pre class="example"><span class="keyword">local</span> astr = asn1.new_string(<span class="string">'ABCD'</span>)
+<span class="global">print</span>(<span class="string">'length:'</span>,#astr)
+<span class="global">print</span>(<span class="string">'length:'</span>,astr:length())
+<span class="global">assert</span>(#astr==astr:length,<span class="string">"must equals"</span>)</pre>
     </ul>
 
 </dd>
@@ -869,9 +867,8 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  <span class="keyword">local</span> obj = astr:dup()
-  <span class="global">assert</span>(obj==astr, <span class="string">"must equals"</span>)</pre>
+        <pre class="example"><span class="keyword">local</span> obj = astr:dup()
+<span class="global">assert</span>(obj==astr, <span class="string">"must equals"</span>)</pre>
     </ul>
 
 </dd>
@@ -887,7 +884,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         result format match with type:data
     </ol>
 
@@ -901,8 +898,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

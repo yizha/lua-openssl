@@ -41,7 +41,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -64,7 +64,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -77,8 +77,7 @@
 <p> create and manage x509 certificate sign request</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  ts = require&apos;openssl&apos;.ts
+        <pre class="example">ts = require&apos;openssl&apos;.ts
 </pre>
     </ul>
 
@@ -383,7 +382,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">input</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
 
 
 
@@ -416,7 +415,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">input</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bio</span></span>
 
 
 
@@ -455,7 +454,7 @@
          (<em>optional</em>)
         </li>
         <li><span class="parameter">identity</span>
-            <span class="types"><span class="type">asn1_object</span>, <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">nid</span></span>
+            <span class="types"><span class="type">asn1_object</span>, <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">nid</span></span>
          for default policy object
          (<em>optional</em>)
         </li>
@@ -483,7 +482,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">reqdata</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">ts_req</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">ts_req</span></span>
 
 
 
@@ -521,7 +520,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -543,7 +542,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
 
 
 
@@ -726,7 +725,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">nonce</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bn</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">bn</span></span>
 
 
 
@@ -805,10 +804,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         octet octet string</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         with algorithm and paramater</li>
     </ol>
 
@@ -827,11 +826,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          digest value of message
         </li>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_md</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_md</span></span>
 
 
 
@@ -869,7 +868,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -911,7 +910,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
 
 
 
@@ -933,7 +932,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
 
 
 
@@ -961,7 +960,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><span class="type">ts_resp</span>, <span class="type">pkcs7</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">ts_resp</span>, <span class="type">pkcs7</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1187,7 +1186,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         imprint
     </ol>
 
@@ -1206,7 +1205,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">imprint</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1416,7 +1415,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">policies</span>
-            <span class="types"><span class="type">asn1_object</span>, <span class="type">integer</span>, <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">stack_of_asn1_object</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><span class="type">asn1_object</span>, <span class="type">integer</span>, <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">stack_of_asn1_object</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
 
 
 
@@ -1567,7 +1566,7 @@
 
         </li>
         <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1602,7 +1601,7 @@
 
         </li>
         <li><span class="parameter">text</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1663,7 +1662,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         contains all support digest method
     </ol>
 
@@ -1682,7 +1681,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">mds</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          support digest method
         </li>
     </ul>
@@ -1709,7 +1708,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">md_alg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_digest</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_digest</span></span>
 
 
 
@@ -1739,7 +1738,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         tst_info
     </ol>
 
@@ -1790,13 +1789,12 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  <span class="keyword">function</span> serial_cb(tsa,arg)
-    <span class="keyword">local</span> bn = ...
-    <span class="keyword">return</span> bn
-  <span class="keyword">end</span>
-  <span class="keyword">local</span> arg = {}
- ts_resp_ctx:set_serial_cb(serial_cb, arg)</pre>
+        <pre class="example"><span class="keyword">function</span> serial_cb(tsa,arg)
+  <span class="keyword">local</span> bn = ...
+  <span class="keyword">return</span> bn
+<span class="keyword">end</span>
+<span class="keyword">local</span> arg = {}
+s_resp_ctx:set_serial_cb(serial_cb, arg)</pre>
     </ul>
 
 </dd>
@@ -1821,14 +1819,13 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  <span class="keyword">function</span> time_cb(tsa,arg)
-    <span class="keyword">local</span> time = <span class="global">os</span>.time()
-    <span class="keyword">local</span> utime = <span class="keyword">nil</span>
-    <span class="keyword">return</span> time,utime
-  <span class="keyword">end</span>
-  <span class="keyword">local</span> arg = {}
- ts_resp_ctx:set_time_cb(time_cb, arg)</pre>
+        <pre class="example"><span class="keyword">function</span> time_cb(tsa,arg)
+  <span class="keyword">local</span> time = <span class="global">os</span>.time()
+  <span class="keyword">local</span> utime = <span class="keyword">nil</span>
+  <span class="keyword">return</span> time,utime
+<span class="keyword">end</span>
+<span class="keyword">local</span> arg = {}
+s_resp_ctx:set_time_cb(time_cb, arg)</pre>
     </ul>
 
 </dd>
@@ -1843,7 +1840,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">bio</span> or <span class="type">ts_req</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">bio</span> or <span class="type">ts_req</span></span>
          support string,bio ts<em>req content or ts</em>req object
         </li>
     </ul>
@@ -1870,7 +1867,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">bio</span> or <span class="type">ts_req</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a>, <span class="type">bio</span> or <span class="type">ts_req</span></span>
          support string,bio ts<em>req content or ts</em>req object
         </li>
     </ul>
@@ -1892,8 +1889,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

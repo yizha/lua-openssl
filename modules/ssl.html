@@ -39,7 +39,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -62,7 +62,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -77,8 +77,7 @@
 </p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  hamc = require(&apos;openssl&apos;).ssl
+        <pre class="example">hamc = require(&apos;openssl&apos;).ssl
 </pre>
     </ul>
 
@@ -351,11 +350,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">protocol</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          support 'SSLv3', 'SSLv23', 'SSLv2', 'TSLv1', 'TSLv1<em>1','TSLv1</em>2','DTLSv1', and can be follow by '<em>server' or '</em>client'
         </li>
         <li><span class="parameter">support_ciphers</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , if not given, default of openssl will be used
          (<em>optional</em>)
         </li>
@@ -402,10 +401,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         alert type</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         desc string, if long set true will return long info</li>
     </ol>
 
@@ -472,7 +471,7 @@
 
         </li>
         <li><span class="parameter">extra_chain_cert_array</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
 
 
 
@@ -502,7 +501,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">keytype</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , 'dh','ecdh',or 'rsa'
         </li>
         <li><span class="parameter">tmp_cb</span>
@@ -535,11 +534,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">keytype</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , 'dh','ecdh',or 'rsa'
         </li>
         <li><span class="parameter">key_pem</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -562,11 +561,11 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">keytype</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , must be 'ecdh'
         </li>
         <li><span class="parameter">curvename</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -594,7 +593,7 @@
          must be true
         </li>
         <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -610,7 +609,7 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 </li>
@@ -625,13 +624,12 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  modes = { ssl_ctx:mode(<span class="string">'enable_partial_write'</span>,<span class="string">'accept_moving_write_buffer'</span>,<span class="string">'auto_retry'</span>) },
+        <pre class="example">modes = { ssl_ctx:mode(<span class="string">'enable_partial_write'</span>,<span class="string">'accept_moving_write_buffer'</span>,<span class="string">'auto_retry'</span>) },
 
-   <span class="keyword">for</span>  i, v <span class="keyword">in</span> <span class="global">ipairs</span>(modes)
-     <span class="global">print</span>(v)
-  <span class="keyword">end</span>
-  --output <span class="string">'enable_partial_write'</span>,<span class="string">'accept_moving_write_buffer'</span>,<span class="string">'auto_retry'</span></pre>
+ <span class="keyword">for</span>  i, v <span class="keyword">in</span> <span class="global">ipairs</span>(modes)
+   <span class="global">print</span>(v)
+<span class="keyword">end</span>
+<span class="comment">--output 'enable_partial_write','accept_moving_write_buffer','auto_retry'</span></pre>
     </ul>
 
 </dd>
@@ -647,7 +645,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         string list of current options
     </ol>
 
@@ -666,7 +664,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">option</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , support "microsoft<em>sess</em>id<em>bug", "netscape</em>challenge<em>bug", "netscape</em>reuse<em>cipher</em>change<em>bug",
  "sslref2</em>reuse<em>cert</em>type<em>bug", "microsoft</em>big<em>sslv3</em>buffer", "msie<em>sslv3</em>rsa<em>padding","ssleay</em>080<em>client</em>dh<em>bug",
  "tls</em>d5<em>bug","tls</em>block<em>padding</em>bug","dont<em>insert</em>empty<em>fragments","all", please to see ssl</em>options.h
@@ -676,7 +674,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         string list of current options after set new option
     </ol>
 
@@ -699,7 +697,7 @@
          set true to clear options
         </li>
         <li><span class="parameter">option</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         , support "microsoft<em>sess</em>id<em>bug", "netscape</em>challenge<em>bug", "netscape</em>reuse<em>cipher</em>change<em>bug",
  "sslref2</em>reuse<em>cert</em>type<em>bug", "microsoft</em>big<em>sslv3</em>buffer", "msie<em>sslv3</em>rsa<em>padding","ssleay</em>080<em>client</em>dh<em>bug",
  "tls</em>d5<em>bug","tls</em>block<em>padding</em>bug","dont<em>insert</em>empty<em>fragments","all",  please to see ssl</em>options.h
@@ -709,7 +707,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         string list of current options after clear some option
     </ol>
 
@@ -833,13 +831,13 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">cafile</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
         </li>
         <li><span class="parameter">capath</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -981,12 +979,11 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  mode = {ctx:verify_mode()}
-  <span class="global">print</span>(<span class="string">'integer mode'</span>,mode[<span class="number">1</span>])
-  <span class="keyword">for</span> i=<span class="number">2</span>, #mode <span class="keyword">then</span>
-    <span class="global">print</span>(<span class="string">'string mode:'</span>..mode[i])
-  <span class="keyword">end</span></pre>
+        <pre class="example">mode = {ctx:verify_mode()}
+<span class="global">print</span>(<span class="string">'integer mode'</span>,mode[<span class="number">1</span>])
+<span class="keyword">for</span> i=<span class="number">2</span>, #mode <span class="keyword">then</span>
+  <span class="global">print</span>(<span class="string">'string mode:'</span>..mode[i])
+<span class="keyword">end</span></pre>
     </ul>
 
 </dd>
@@ -1058,7 +1055,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">verify_cb_flag</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          support field always<em>continue with boolean value and verify</em>depth with number value.
         </li>
     </ul>
@@ -1207,7 +1204,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">arg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
           certificate:  return SSL certificates
   fd: return file or network connect fd
   rfd:
@@ -1253,7 +1250,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">arg</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
           certificate:  return SSL certificates
   fd: return file or network connect fd
   rfd:
@@ -1373,7 +1370,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         include name,version,id,bits,algbits and description
     </ol>
 
@@ -1393,7 +1390,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1418,7 +1415,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          all certificate in chains verify result
   preverify<em>ok as boolean verify result
   error as number error code
@@ -1462,7 +1459,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">sesion</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <a class="type" href="../modules/ssl.html#ssl">ssl_session</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <a class="type" href="../modules/ssl.html#ssl">ssl_session</a></span>
           reuse session would speed up ssl handshake
         </li>
     </ul>
@@ -1583,7 +1580,7 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         'nothing', 'reading', 'writing', 'x509_lookup'</li>
         <li>
            <span class="types"><span class="type">number</span></span>
@@ -1624,7 +1621,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reason</li>
     </ol>
 
@@ -1647,7 +1644,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reasion</li>
     </ol>
 
@@ -1675,10 +1672,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data, nil or false for fail</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reason</li>
     </ol>
 
@@ -1706,10 +1703,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         data, nil or false for fail</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reason</li>
     </ol>
 
@@ -1728,7 +1725,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -1741,7 +1738,7 @@
            <span class="types"><span class="type">number</span></span>
         count of bytes write successfully</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reason</li>
     </ol>
 
@@ -1764,7 +1761,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reasion</li>
     </ol>
 
@@ -1787,7 +1784,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reasion</li>
     </ol>
 
@@ -1821,7 +1818,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">mode</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          support 'read','write', 'quite', 'noquite'
         </li>
     </ul>
@@ -1858,7 +1855,7 @@
      <h3>Or</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         if mode is false, return 'read' or 'write' for shutdown direction
     </ol>
 
@@ -1881,7 +1878,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reasion</li>
     </ol>
 
@@ -1904,7 +1901,7 @@
            <span class="types"><span class="type">boolean</span></span>
         true for success</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         fail reasion</li>
     </ol>
 
@@ -1946,8 +1943,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>

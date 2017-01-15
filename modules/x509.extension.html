@@ -39,7 +39,7 @@
 
 
 <h2>Modules</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="nowrap">
   <li><a href="../modules/asn1.html">asn1</a></li>
   <li><a href="../modules/bio.html">bio</a></li>
   <li><a href="../modules/cipher.html">cipher</a></li>
@@ -62,7 +62,7 @@
   <li><a href="../modules/x509.store.html">x509.store</a></li>
 </ul>
 <h2>Topics</h2>
-<ul class="$(kind=='Topics' and '' or 'nowrap'">
+<ul class="">
   <li><a href="../topics/readme.md.html">readme</a></li>
 </ul>
 
@@ -75,8 +75,7 @@
 <p> Sometime when you make CSR,TS or X509, you maybe need to use this.</p>
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
-  extension = require(&apos;openssl&apos;).x509.extension
+        <pre class="example">extension = require(&apos;openssl&apos;).x509.extension
 </pre>
     </ul>
 
@@ -178,7 +177,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">extension</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
          with object, value and critical
         </li>
     </ul>
@@ -209,7 +208,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">data</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          der encoded
         </li>
     </ul>
@@ -236,7 +235,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">node_array</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         , each node is a x509_extension node
         </li>
     </ul>
@@ -269,10 +268,10 @@
     <h3>Returns:</h3>
     <ol>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         contain all support extension nid</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         contain all support extension info as table node {lname=..., sname=..., nid=...}</li>
     </ol>
 
@@ -318,7 +317,7 @@
     <h3>Parameters:</h3>
     <ul>
         <li><span class="parameter">nid_or_name</span>
-            <span class="types"><span class="type">number</span> or <a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+            <span class="types"><span class="type">number</span> or <a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
          for extension
         </li>
         <li><span class="parameter">true</span>
@@ -355,7 +354,7 @@
          of x509_extension
         </li>
         <li><span class="parameter">object</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">asn1_object</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">asn1_object</span></span>
         , object of extension
         </li>
     </ul>
@@ -365,12 +364,11 @@
 
     <h3>Usage:</h3>
     <ul>
-        <pre class="example">
- xattr = x509.attr.new_extension {
-   object = asn1_object,
-   critical = <span class="keyword">false</span>,
-   value = <span class="global">string</span> <span class="keyword">or</span> asn1_string value
- }</pre>
+        <pre class="example">xattr = x509.attr.new_extension {
+  object = asn1_object,
+  critical = <span class="keyword">false</span>,
+  value = <span class="global">string</span> <span class="keyword">or</span> asn1_string value
+}</pre>
     </ul>
 
 </dd>
@@ -394,7 +392,7 @@
          for critical value
         </li>
         <li><span class="parameter">as</span>
-            <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">value</span></span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">value</span></span>
          octet string
         </li>
     </ul>
@@ -431,7 +429,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
         info,  x509_extension infomation as table
     </ol>
 
@@ -511,7 +509,7 @@
            <span class="types"><span class="type">nil</span></span>
         nil, fail return nothing</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         errmsg reason of fail</li>
     </ol>
 
@@ -569,7 +567,7 @@
            <span class="types"><span class="type">nil</span></span>
         nil when occure error</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         errmsg error message</li>
     </ol>
 
@@ -627,7 +625,7 @@
            <span class="types"><span class="type">nil</span></span>
         nil when occure error</li>
         <li>
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
         errmsg error message</li>
     </ol>
 
@@ -647,7 +645,7 @@
     <h3>Returns:</h3>
     <ol>
 
-           <span class="types"><a class="type" href="http://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+           <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
 
 
 
@@ -663,8 +661,8 @@
 </div> <!-- id="content" -->
 </div> <!-- id="main" -->
 <div id="about">
-<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.3</a></i>
-<i style="float:right;">Last updated 2016-01-04 09:44:15 </i>
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
