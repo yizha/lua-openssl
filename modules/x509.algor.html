@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<head>
+    <title>lua-openssl Docmentation</title>
+    <link rel="stylesheet" href="../ldoc_pale.css" type="text/css" />
+</head>
+<body>
+
+<div id="container">
+
+<div id="product">
+	<div id="product_logo"></div>
+	<div id="product_name"><big><b></b></big></div>
+	<div id="product_description"></div>
+</div> <!-- id="product" -->
+
+
+<div id="main">
+
+
+<!-- Menu -->
+
+<div id="navigation">
+<br/>
+<h1>lua-openssl</h1>
+
+<ul>
+  <li><a href="../index.html">Index</a></li>
+</ul>
+
+<h2>Contents</h2>
+<ul>
+<li><a href="#Functions">Functions</a></li>
+<li><a href="#Class_x509_algor">Class x509_algor </a></li>
+</ul>
+
+
+<h2>Modules</h2>
+<ul class="nowrap">
+  <li><a href="../modules/asn1.html">asn1</a></li>
+  <li><a href="../modules/bio.html">bio</a></li>
+  <li><a href="../modules/cipher.html">cipher</a></li>
+  <li><a href="../modules/cms.html">cms</a></li>
+  <li><a href="../modules/digest.html">digest</a></li>
+  <li><a href="../modules/hmac.html">hmac</a></li>
+  <li><a href="../modules/openssl.html">openssl</a></li>
+  <li><a href="../modules/pkcs12.html">pkcs12</a></li>
+  <li><a href="../modules/pkcs7.html">pkcs7</a></li>
+  <li><a href="../modules/pkey.html">pkey</a></li>
+  <li><a href="../modules/sk.html">sk</a></li>
+  <li><a href="../modules/ssl.html">ssl</a></li>
+  <li><a href="../modules/ts.html">ts</a></li>
+  <li><a href="../modules/x509.html">x509</a></li>
+  <li><strong>x509.algor</strong></li>
+  <li><a href="../modules/x509.attr.html">x509.attr</a></li>
+  <li><a href="../modules/x509.crl.html">x509.crl</a></li>
+  <li><a href="../modules/x509.extension.html">x509.extension</a></li>
+  <li><a href="../modules/x509.name.html">x509.name</a></li>
+  <li><a href="../modules/x509.req.html">x509.req</a></li>
+  <li><a href="../modules/x509.store.html">x509.store</a></li>
+</ul>
+<h2>Topics</h2>
+<ul class="">
+  <li><a href="../topics/readme.md.html">readme</a></li>
+</ul>
+
+</div>
+
+<div id="content">
+
+<h1>Module <code>x509.algor</code></h1>
+<p>Provide X509_ALGOR as lua object.</p>
+<p> Sometime when you make CSR,TS or X509, you maybe need to use this.</p>
+    <h3>Usage:</h3>
+    <ul>
+        <pre class="example">algor = require(&apos;openssl&apos;).x509.algor
+</pre>
+    </ul>
+
+
+<h2><a href="#Functions">Functions</a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#new">new ()</a></td>
+	<td class="summary">Create x509_algor object</td>
+	</tr>
+</table>
+<h2><a href="#Class_x509_algor">Class x509_algor </a></h2>
+<table class="function_list">
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor:dup">x509_algor:dup ()</a></td>
+	<td class="summary">clone the x509_algor</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor:set">x509_algor:set (obj[, val])</a></td>
+	<td class="summary">set x509_algor properties</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor:get">x509_algor:get (ident, attached)</a></td>
+	<td class="summary">get x509_algor properties</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor:tostring">x509_algor:tostring (txt)</a></td>
+	<td class="summary">convert x509<em>algor to txt string of asn1</em>object</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor:equals">x509_algor:equals (other)</a></td>
+	<td class="summary">check with other x509<em>algor whether equals, alias with == operator
+ only when OPENSSL</em>VERSION_NUMBER >= 0x10002000L</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor:equals">x509_algor:equals (other)</a></td>
+	<td class="summary">check with other x509<em>algor whether equals, alias with == operator
+ only when OPENSSL</em>VERSION_NUMBER >= 0x10002000L</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#x509_algor.digest">x509_algor.digest</a></td>
+	<td class="summary">set digest algorithm, alias of set()
+ only when OPENSSL<em>VERSION</em>NUMBER >= 0x10001000</td>
+	</tr>
+</table>
+
+<br/>
+<br/>
+
+
+    <h2 class="section-header "><a name="Functions"></a>Functions</h2>
+
+    <dl class="function">
+    <dt>
+    <a name = "new"></a>
+    <strong>new ()</strong>
+    </dt>
+    <dd>
+    Create x509_algor object
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_algor</span></span>
+        mapping to X509_ALGOR in openssl
+    </ol>
+
+
+
+
+</dd>
+</dl>
+    <h2 class="section-header has-description"><a name="Class_x509_algor"></a>Class x509_algor </h2>
+
+          <div class="section-description">
+          openssl.x509_algor object
+          </div>
+    <dl class="function">
+    <dt>
+    <a name = "x509_algor:dup"></a>
+    <strong>x509_algor:dup ()</strong>
+    </dt>
+    <dd>
+    clone the x509_algor
+
+
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">x509_algor</span></span>
+        clone of x509_algor
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_algor:set"></a>
+    <strong>x509_algor:set (obj[, val])</strong>
+    </dt>
+    <dd>
+    set x509_algor properties
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">obj</span>
+            <span class="types"><span class="type">asn1_object</span></span>
+         ident algorithm in openssl
+        </li>
+        <li><span class="parameter">val</span>
+            <span class="types"><span class="type">asn1_string</span></span>
+         attached paramater value
+         (<em>optional</em>)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success, others for fail
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_algor:get"></a>
+    <strong>x509_algor:get (ident, attached)</strong>
+    </dt>
+    <dd>
+    get x509_algor properties
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">ident</span>
+            <span class="types"><span class="type">asn1_object</span></span>
+         algorithm, nil for fail
+        </li>
+        <li><span class="parameter">attached</span>
+            <span class="types"><span class="type">asn1_string</span></span>
+         paramater value
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_algor:tostring"></a>
+    <strong>x509_algor:tostring (txt)</strong>
+    </dt>
+    <dd>
+    convert x509<em>algor to txt string of asn1</em>object
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">txt</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         of asn1_object
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_algor:equals"></a>
+    <strong>x509_algor:equals (other)</strong>
+    </dt>
+    <dd>
+    check with other x509<em>algor whether equals, alias with == operator
+ only when OPENSSL</em>VERSION_NUMBER >= 0x10002000L
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+            <span class="types"><span class="type">x509_algor</span></span>
+         to compare
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_algor:equals"></a>
+    <strong>x509_algor:equals (other)</strong>
+    </dt>
+    <dd>
+    check with other x509<em>algor whether equals, alias with == operator
+ only when OPENSSL</em>VERSION_NUMBER >= 0x10002000L
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">other</span>
+            <span class="types"><span class="type">x509_algor</span></span>
+         to compare
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+    <dt>
+    <a name = "x509_algor.digest"></a>
+    <strong>x509_algor.digest</strong>
+    </dt>
+    <dd>
+    set digest algorithm, alias of set()
+ only when OPENSSL<em>VERSION</em>NUMBER >= 0x10001000
+
+
+    <ul>
+        <li><span class="parameter">digest</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a> or <span class="type">evp_digest</span></span>
+         algorithm
+        </li>
+    </ul>
+
+
+
+
+
+</dd>
+</dl>
+
+
+</div> <!-- id="content" -->
+</div> <!-- id="main" -->
+<div id="about">
+<i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
+<i style="float:right;">Last updated 2017-02-17 16:09:08 </i>
+</div> <!-- id="about" -->
+</div> <!-- id="container" -->
+</body>
+</html>

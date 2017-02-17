@@ -53,6 +53,7 @@
   <li><a href="../modules/ssl.html">ssl</a></li>
   <li><a href="../modules/ts.html">ts</a></li>
   <li><a href="../modules/x509.html">x509</a></li>
+  <li><a href="../modules/x509.algor.html">x509.algor</a></li>
   <li><a href="../modules/x509.attr.html">x509.attr</a></li>
   <li><a href="../modules/x509.crl.html">x509.crl</a></li>
   <li><a href="../modules/x509.extension.html">x509.extension</a></li>
@@ -84,12 +85,12 @@
 <h2><a href="#Functions">Functions</a></h2>
 <table class="function_list">
 	<tr>
-	<td class="name" nowrap><a href="#read">read (input[, allow='auto'], password)</a></td>
+	<td class="name" nowrap><a href="#read">read (input[, allow='auto'])</a></td>
 	<td class="summary">read pkcs7
  read string or bio object, which include pkcs7 content</td>
 	</tr>
 	<tr>
-	<td class="name" nowrap><a href="#sign">sign (msg, sigcert, signkey[, cacerts[, flags=0]])</a></td>
+	<td class="name" nowrap><a href="#sign">sign (msg, signcert, signkey[, cacerts[, flags=0]])</a></td>
 	<td class="summary">sign message with signcert and signpkey to create pkcs7 object</td>
 	</tr>
 	<tr>
@@ -103,6 +104,10 @@
 	<tr>
 	<td class="name" nowrap><a href="#decrypt">decrypt (input, recipcert, recipkey)</a></td>
 	<td class="summary">decrypt encrypted pkcs7 message</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#new">new ([oid=NID_pkcs7_signed[, content=NID_pkcs7_data]])</a></td>
+	<td class="summary">create new empty pkcs7 object, which support flexble sign methods.</td>
 	</tr>
 </table>
 <h2><a href="#Class_pkcs7">Class pkcs7 </a></h2>
@@ -123,6 +128,18 @@
 	<td class="name" nowrap><a href="#pkcs7:decrypt">pkcs7:decrypt (recipcert, recipkey)</a></td>
 	<td class="summary">decrypt encrypted pkcs7 message</td>
 	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:add_signer">pkcs7:add_signer (cert, pkey, digest[, flags=0])</a></td>
+	<td class="summary">pkcs7 sign add signer</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:sign_digest">pkcs7:sign_digest (data[, flags=0[, hashed=false]])</a></td>
+	<td class="summary">pkcs7 sign data</td>
+	</tr>
+	<tr>
+	<td class="name" nowrap><a href="#pkcs7:verify_digest">pkcs7:verify_digest ([certs][, store], data[, hashed=false])</a></td>
+	<td class="summary">pkcs7 verify signature or digest</td>
+	</tr>
 </table>
 
 <br/>
@@ -134,7 +151,7 @@
     <dl class="function">
     <dt>
     <a name = "read"></a>
-    <strong>read (input[, allow='auto'], password)</strong>
+    <strong>read (input[, allow='auto'])</strong>
     </dt>
     <dd>
     read pkcs7
@@ -155,10 +172,6 @@
   auto will only try 'der' or 'pem'
          (<em>default</em> 'auto')
         </li>
-        <li><span class="parameter">password</span>
-            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
-         for pkcs12
-        </li>
     </ul>
 
     <h3>Returns:</h3>
@@ -177,7 +190,7 @@
 </dd>
     <dt>
     <a name = "sign"></a>
-    <strong>sign (msg, sigcert, signkey[, cacerts[, flags=0]])</strong>
+    <strong>sign (msg, signcert, signkey[, cacerts[, flags=0]])</strong>
     </dt>
     <dd>
     sign message with signcert and signpkey to create pkcs7 object
@@ -191,7 +204,7 @@
 
 
         </li>
-        <li><span class="parameter">sigcert</span>
+        <li><span class="parameter">signcert</span>
             <span class="types"><span class="type">x509</span></span>
 
 
@@ -374,6 +387,39 @@
 
 
 </dd>
+    <dt>
+    <a name = "new"></a>
+    <strong>new ([oid=NID_pkcs7_signed[, content=NID_pkcs7_data]])</strong>
+    </dt>
+    <dd>
+    create new empty pkcs7 object, which support flexble sign methods.
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">oid</span>
+            <span class="types"><span class="type">int</span></span>
+         given pkcs7 type
+         (<em>default</em> NID_pkcs7_signed)
+        </li>
+        <li><span class="parameter">content</span>
+            <span class="types"><span class="type">int</span></span>
+         given pkcs7 content type
+         (<em>default</em> NID_pkcs7_data)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><a class="type" href="../modules/pkcs7.html#pkcs7">pkcs7</a></span>
+        object
+    </ol>
+
+
+
+
+</dd>
 </dl>
     <h2 class="section-header has-description"><a name="Class_pkcs7"></a>Class pkcs7 </h2>
 
@@ -520,6 +566,129 @@
 
 
 </dd>
+    <dt>
+    <a name = "pkcs7:add_signer"></a>
+    <strong>pkcs7:add_signer (cert, pkey, digest[, flags=0])</strong>
+    </dt>
+    <dd>
+    pkcs7 sign add signer
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">cert</span>
+            <span class="types"><span class="type">x509</span></span>
+         used to sign data
+        </li>
+        <li><span class="parameter">pkey</span>
+            <span class="types"><span class="type">evp_pkey</span></span>
+         used to sign data
+        </li>
+        <li><span class="parameter">digest</span>
+            <span class="types"><span class="type">evp_md</span> or <span class="type">int</span></span>
+         method when sign data
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">int</span></span>
+         switch process when add signer
+         (<em>default</em> 0)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
+    <dt>
+    <a name = "pkcs7:sign_digest"></a>
+    <strong>pkcs7:sign_digest (data[, flags=0[, hashed=false]])</strong>
+    </dt>
+    <dd>
+    pkcs7 sign data
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to sign data, maybe already hashed
+        </li>
+        <li><span class="parameter">flags</span>
+            <span class="types"><span class="type">int</span></span>
+         when sign data
+         (<em>default</em> 0)
+        </li>
+        <li><span class="parameter">hashed</span>
+            <span class="types"><span class="type">boolean</span></span>
+         when true will skip hash process
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+    <h3>See also:</h3>
+    <ul>
+         <a href="../modules/pkcs7.html#sign">sign</a>
+    </ul>
+
+
+</dd>
+    <dt>
+    <a name = "pkcs7:verify_digest"></a>
+    <strong>pkcs7:verify_digest ([certs][, store], data[, hashed=false])</strong>
+    </dt>
+    <dd>
+    pkcs7 verify signature or digest
+
+
+    <h3>Parameters:</h3>
+    <ul>
+        <li><span class="parameter">certs</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.5">table</a></span>
+         contains certificate used to sign data
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">store</span>
+            <span class="types"><span class="type">x509_store</span></span>
+         to verify certs
+         (<em>optional</em>)
+        </li>
+        <li><span class="parameter">data</span>
+            <span class="types"><a class="type" href="https://www.lua.org/manual/5.1/manual.html#5.4">string</a></span>
+         to be signed
+        </li>
+        <li><span class="parameter">hashed</span>
+            <span class="types"><span class="type">boolean</span></span>
+         true for data already hashed
+         (<em>default</em> false)
+        </li>
+    </ul>
+
+    <h3>Returns:</h3>
+    <ol>
+
+           <span class="types"><span class="type">boolean</span></span>
+        result true for success
+    </ol>
+
+
+
+
+</dd>
 </dl>
 
 
@@ -527,7 +696,7 @@
 </div> <!-- id="main" -->
 <div id="about">
 <i>generated by <a href="http://github.com/stevedonovan/LDoc">LDoc 1.4.6</a></i>
-<i style="float:right;">Last updated 2017-01-15 15:03:36 </i>
+<i style="float:right;">Last updated 2017-02-17 16:09:08 </i>
 </div> <!-- id="about" -->
 </div> <!-- id="container" -->
 </body>
