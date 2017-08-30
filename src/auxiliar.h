@@ -33,7 +33,7 @@
 
 #include "lua.h"
 #include "lauxlib.h"
-#if LUA_VERSION_NUM>501
+#if defined(luaL_newlibtable) || LUA_VERSION_NUM>501
 #define luaL_reg luaL_Reg
 #endif
 

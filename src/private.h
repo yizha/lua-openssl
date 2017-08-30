@@ -1,6 +1,6 @@
 #include "openssl.h"
 
-#include "lua-compat/c-api/compat-5.2.h"
+#include "lua-compat/c-api/compat-5.3.h"
 
 #define luaL_checktable(L, n) luaL_checktype(L, n, LUA_TTABLE)
 
